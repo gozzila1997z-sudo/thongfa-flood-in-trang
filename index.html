@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>รายงานพื้นที่เสี่ยงอุทกภัยและจำนวนร้านธงฟ้า จังหวัดตรัง</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #f8fafc;
+    }
+    .accordion-content {
+      transition: max-height 0.35s ease-in-out, opacity 0.25s ease-in-out;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .accordion-content.open {
+      max-height: 3000px;
+      opacity: 1;
+    }
+    /* Custom Scrollbar for inner tables on mobile */
+    .table-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    .table-scroll::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- 1. HEADER & KPI SUMMARY BANNER -->
+    <header class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 sm:p-8 mb-6 relative overflow-hidden">
+      <div class="absolute top-0 right-0 -mt-12 -mr-12 w-64 h-64 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 mb-3">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            ระบบฐานข้อมูลเฝ้าระวังอุทกภัยและจุดกระจายสินค้าจังหวัดตรัง
+          </div>
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
+            พื้นที่เสี่ยงอุทกภัยและร้านธงฟ้า จังหวัดตรัง
+          </h1>
+          <p class="text-slate-500 text-sm sm:text-base mt-1.5">
+            ข้อมูลจำแนกตามอำเภอ ตำบล เทศบาล และหมายเลขหมู่บ้าน/ชุมชน พร้อมจำนวนร้านธงฟ้าในพื้นที่ทั้ง 10 อำเภอ (87 ตำบล)
+          </p>
+        </div>
+
+        <!-- Secondary Metadata Pills from Summary Sheet -->
+        <div class="flex flex-wrap gap-2 md:justify-end">
+          <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-medium">
+            พื้นที่เสี่ยง: <strong class="text-slate-900">9 อำเภอ</strong> (จาก 10 อำเภอ)
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-medium">
+            เทศบาลในพื้นที่เสี่ยง: <strong class="text-slate-900">13 แห่ง</strong>
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-medium">
+            หมู่บ้านทั้งหมด: <strong class="text-slate-900">487 หมู่บ้าน / 42 ชุมชน</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- 4 KPI Summary Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- KPI 1: Blue (Total Risk Areas & Thong Fah Shops) -->
+        <div class="rounded-2xl bg-gradient-to-br from-blue-50 to-sky-50/60 border border-blue-200/80 p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-blue-800">พื้นที่เสี่ยงรวม / ร้านธงฟ้า</span>
+            <span class="p-2 rounded-xl bg-blue-600/10 text-blue-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiTotalRisk" class="text-3xl font-bold text-blue-900">491</span>
+            <span class="text-xs font-medium text-blue-700">พื้นที่เสี่ยง</span>
+            <span class="text-slate-300">|</span>
+            <span id="kpiTotalShops" class="text-2xl font-bold text-sky-700">1,923</span>
+            <span class="text-xs font-medium text-sky-700">ร้านธงฟ้า</span>
+          </div>
+          <p class="text-xs text-blue-700/80 mt-2">ครอบคลุม 10 อำเภอ 87 ตำบลทั่วจังหวัดตรัง</p>
+        </div>
+
+        <!-- KPI 2: Red (High Risk) -->
+        <div class="rounded-2xl bg-gradient-to-br from-red-50 to-rose-50/60 border border-red-200/80 p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-red-800">พื้นที่เสี่ยงมาก (สีแดง)</span>
+            <span class="p-2 rounded-xl bg-red-600/10 text-red-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiHighRisk" class="text-3xl font-bold text-red-700">50</span>
+            <span class="text-sm font-medium text-red-700">หมู่บ้าน/ชุมชน</span>
+          </div>
+          <p class="text-xs text-red-700/80 mt-2">พบใน 5 อำเภอ (เมืองตรัง, รัษฎา, ย่านตาขาว, ปะเหลียน, ห้วยยอด)</p>
+        </div>
+
+        <!-- KPI 3: Orange (Medium Risk) -->
+        <div class="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/60 border border-amber-200/80 p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-amber-900">พื้นที่เสี่ยงปานกลาง (สีส้ม)</span>
+            <span class="p-2 rounded-xl bg-amber-500/10 text-amber-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiMedRisk" class="text-3xl font-bold text-amber-700">177</span>
+            <span class="text-sm font-medium text-amber-800">หมู่บ้าน/ชุมชน</span>
+          </div>
+          <p class="text-xs text-amber-800/80 mt-2">ข้อมูลสรุปเฉพาะระดับหมู่บ้าน 154 หมู่บ้าน</p>
+        </div>
+
+        <!-- KPI 4: Green (Low Risk) -->
+        <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50/60 border border-emerald-200/80 p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-emerald-900">พื้นที่เสี่ยงน้อย (สีเขียว)</span>
+            <span class="p-2 rounded-xl bg-emerald-600/10 text-emerald-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span id="kpiLowRisk" class="text-3xl font-bold text-emerald-700">264</span>
+            <span class="text-sm font-medium text-emerald-800">หมู่บ้าน/ชุมชน</span>
+          </div>
+          <p class="text-xs text-emerald-800/80 mt-2">ข้อมูลสรุปเฉพาะระดับหมู่บ้าน 258 หมู่บ้าน</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. SEARCH & FILTER CONTROLS -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-4 sm:p-5 mb-6 sticky top-3 z-20 backdrop-blur-md bg-white/95">
+      <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
+        
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id="searchInput"
+            type="text"
+            oninput="filterData()"
+            placeholder="ค้นหาชื่ออำเภอ, ตำบล, เทศบาล หรือเลขหมู่บ้าน/ชุมชน..."
+            class="w-full pl-11 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
+          />
+          <button
+            id="clearSearchBtn"
+            onclick="clearSearch()"
+            class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs bg-slate-200/70 px-2 py-0.5 rounded-md"
+          >
+            ล้าง
+          </button>
+        </div>
+
+        <!-- Filter Buttons & Expand/Collapse All -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            onclick="setRiskFilter('all')"
+            id="btn-filter-all"
+            class="filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-blue-600 text-white shadow-sm"
+          >
+            ทั้งหมด (10 อำเภอ)
+          </button>
+          <button
+            onclick="setRiskFilter('high')"
+            id="btn-filter-high"
+            class="filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-slate-100 text-slate-700 hover:bg-red-50 hover:text-red-700"
+          >
+            เฉพาะที่มีเสี่ยงมาก
+          </button>
+          <button
+            onclick="setRiskFilter('high_med')"
+            id="btn-filter-high_med"
+            class="filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-slate-100 text-slate-700 hover:bg-amber-50 hover:text-amber-800"
+          >
+            เฉพาะที่มีความเสี่ยงสูง/ปานกลาง
+          </button>
+          <button
+            onclick="setRiskFilter('has_risk')"
+            id="btn-filter-has_risk"
+            class="filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+          >
+            มีพื้นที่เสี่ยง (9 อำเภอ)
+          </button>
+
+          <div class="h-5 w-px bg-slate-200 hidden sm:block mx-1"></div>
+
+          <!-- Toggle All Accordions Button -->
+          <button
+            onclick="toggleAllAccordions()"
+            id="toggleAllBtn"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-white hover:bg-slate-700 transition shadow-sm"
+          >
+            <svg id="toggleAllIcon" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            <span id="toggleAllText">ขยายตารางย่อยทั้งหมด</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Status Bar -->
+      <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
+        <span id="resultCountText">กำลังแสดงข้อมูลครบทั้ง 10 อำเภอ (87 ตำบล)</span>
+        <span class="text-slate-400">*คลิกที่ปุ่ม "ดูรายละเอียดรายตำบล" ในแต่ละการ์ดเพื่อดูเลขหมู่บ้านและจำนวนร้านธงฟ้า</span>
+      </div>
+    </section>
+
+    <!-- 3. MAIN GRID LAYOUT & ACCORDION CARDS -->
+    <main id="cardsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <!-- Rendered dynamically via JavaScript -->
+    </main>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden bg-white rounded-3xl border border-slate-200 p-12 text-center my-6">
+      <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 mx-auto flex items-center justify-center mb-4">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800">ไม่พบข้อมูลพื้นที่ตามเงื่อนไขที่ค้นหา</h3>
+      <p class="text-sm text-slate-500 mt-1">ลองเปลี่ยนคำค้นหา หรือกดปุ่ม "ทั้งหมด (10 อำเภอ)" เพื่อดูข้อมูลทั้งหมด</p>
+      <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition">
+        แสดงข้อมูลทั้งหมด
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-10 pt-6 border-t border-slate-200/80 text-center text-xs text-slate-500 space-y-1">
+      <p class="font-medium text-slate-600">เอกสารอ้างอิง: ข้อมูลพื้นที่เสี่ยงอุทกภัยในพื้นที่จังหวัดตรัง แยกหมู่บ้าน และข้อมูลพื้นที่ความเสี่ยงน้ำท่วมและร้านธงฟ้าในจังหวัดตรัง</p>
+      <p>หมายเหตุ: ข้อมูลสรุปตามเอกสารแยกหมู่บ้านระบุ 9 อำเภอ 60 ตำบล 13 เทศบาล (487 หมู่บ้าน 42 ชุมชน: เสี่ยงมาก 50 หมู่บ้าน, เสี่ยงปานกลาง 154 หมู่บ้าน, เสี่ยงน้อย 258 หมู่บ้าน)</p>
+    </footer>
+
+  </div>
+
+  <!-- 4. DATA STRUCTURE & JAVASCRIPT LOGIC -->
+  <script>
+    /**
+     * โครงสร้างข้อมูลพื้นที่เสี่ยงอุทกภัยและร้านธงฟ้า จังหวัดตรัง (ครบทั้ง 10 อำเภอ 87 ตำบล + ข้อมูลหมู่บ้าน/เทศบาล)
+     */
+    const trangFloodData = [
+      {
+        id: "mueang",
+        district: "อำเภอเมืองตรัง",
+        municipalitiesNote: "รวม ทน.ตรัง (21 ชุมชน), ทต.โคกหล่อ, ทต.นาตาล่วง, ทต.คลองเต็ง (3 ชุมชน)",
+        subdistricts: [
+          { name: "ต.ทับเทียง (ทน.ตรัง)", high: 0, medium: 0, low: 21, total: 21, shops: 77, highVillages: "-", medVillages: "-", lowVillages: "21 ชุมชน (ทน.ตรัง)" },
+          { name: "ต.นาพละ", high: 0, medium: 6, low: 4, total: 10, shops: 10, highVillages: "-", medVillages: "ม.1, 4, 5, 6, 8, 9", lowVillages: "ม.2, 3, 7, 10" },
+          { name: "ต.บ้านควน", high: 0, medium: 3, low: 3, total: 6, shops: 0, highVillages: "-", medVillages: "ม.2, 3, 5", lowVillages: "ม.1, 4, 6" },
+          { name: "ต.นาบินหลา", high: 3, medium: 1, low: 2, total: 6, shops: 12, highVillages: "ม.1, 2, 3", medVillages: "ม.4", lowVillages: "ม.5, 6" },
+          { name: "ต.ควนปริง", high: 3, medium: 1, low: 5, total: 9, shops: 14, highVillages: "ม.2, 5, 6", medVillages: "ม.8", lowVillages: "ม.1, 3, 4, 7, 9" },
+          { name: "ต.นาโยงใต้", high: 0, medium: 0, low: 8, total: 8, shops: 8, highVillages: "-", medVillages: "-", lowVillages: "ม.1-8" },
+          { name: "ต.บางรัก", high: 2, medium: 4, low: 0, total: 6, shops: 1, highVillages: "ม.5, 6", medVillages: "ม.1, 2, 3, 5", lowVillages: "-" },
+          { name: "ต.โคกหล่อ (ทต.โคกหล่อ)", high: 0, medium: 0, low: 12, total: 12, shops: 19, highVillages: "-", medVillages: "-", lowVillages: "ม.1-12" },
+          { name: "ต.นาโต๊ะหมิง", high: 1, medium: 1, low: 4, total: 6, shops: 9, highVillages: "ม.4", medVillages: "ม.1", lowVillages: "ม.2, 3, 5, 6" },
+          { name: "ต.หนองตรุด", high: 4, medium: 6, low: 3, total: 13, shops: 20, highVillages: "ม.1, 2, 3, 8", medVillages: "ม.6", lowVillages: "ม.4, 5, 7" },
+          { name: "ต.น้ำผุด (รวม ทต.คลองเต็ง)", high: 0, medium: 1, low: 11, total: 12, shops: 40, highVillages: "-", medVillages: "ม.6", lowVillages: "ม.1-5, 7-12 (ทต.คลองเต็ง 3 ชุมชน)" },
+          { name: "ต.นาตาล่วง (ทต.นาตาล่วง)", high: 1, medium: 0, low: 5, total: 6, shops: 9, highVillages: "ม.4", medVillages: "-", lowVillages: "ม.1, 2, 3, 5, 6" },
+          { name: "ต.บ้านโพธิ์", high: 1, medium: 3, low: 6, total: 10, shops: 35, highVillages: "ม.4", medVillages: "ม.1, 5, 7", lowVillages: "ม.2, 3, 6, 8, 9, 10" },
+          { name: "ต.นาท่ามเหนือ", high: 0, medium: 4, low: 4, total: 8, shops: 30, highVillages: "-", medVillages: "ม.2, 7, 10, 12", lowVillages: "ม.1, 2, 9, 11" },
+          { name: "ต.นาท่ามใต้", high: 6, medium: 2, low: 0, total: 8, shops: 23, highVillages: "ม.2, 3, 4, 6, 7, 8", medVillages: "ม.1, 4", lowVillages: "-" }
+        ]
+      },
+      {
+        id: "huaiyot",
+        district: "อำเภอห้วยยอด",
+        municipalitiesNote: "รวม ทต.ลำภูรา (5 ชุมชน), ทต.นาวง (5 ชุมชน), ทต.ห้วยนาง (ม.1-8)",
+        subdistricts: [
+          { name: "ต.ห้วยยอด", high: 0, medium: 0, low: 2, total: 2, shops: 26, highVillages: "-", medVillages: "-", lowVillages: "ม.3, 5" },
+          { name: "ต.ห้วยนาง (รวม ทต.ห้วยนาง)", high: 0, medium: 0, low: 8, total: 8, shops: 29, highVillages: "-", medVillages: "-", lowVillages: "ม.1-8 (รวม ทต.ห้วยนาง ม.1-8)" },
+          { name: "ต.หนองช้างแล่น", high: 0, medium: 2, low: 7, total: 9, shops: 28, highVillages: "-", medVillages: "ม.3, 11", lowVillages: "ม.1, 2, 4, 5, 8, 12" },
+          { name: "ต.เขากอบ", high: 0, medium: 0, low: 12, total: 12, shops: 31, highVillages: "-", medVillages: "-", lowVillages: "ม.1-12" },
+          { name: "ต.บางดี", high: 0, medium: 5, low: 5, total: 10, shops: 30, highVillages: "-", medVillages: "ม.1, 2, 3, 5, 7", lowVillages: "ม.4, 5, 6, 12" },
+          { name: "ต.บางกุ้ง", high: 0, medium: 0, low: 8, total: 8, shops: 16, highVillages: "-", medVillages: "-", lowVillages: "ม.1, 3, 4, 5, 7, 8, 9" },
+          { name: "ต.ปากคม", high: 2, medium: 5, low: 0, total: 7, shops: 17, highVillages: "ม.2, 4", medVillages: "ม.1, 3, 5, 7", lowVillages: "-" },
+          { name: "ต.ปากแจ่ม", high: 0, medium: 0, low: 0, total: 0, shops: 19, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ทุ่งต่อ", high: 0, medium: 1, low: 7, total: 8, shops: 19, highVillages: "-", medVillages: "ม.1", lowVillages: "ม.2-8" },
+          { name: "ต.ท่างิ้ว", high: 0, medium: 6, low: 0, total: 6, shops: 19, highVillages: "-", medVillages: "ม.1, 2, 3, 4, 5, 7, 8", lowVillages: "ม.1, 2, 4, 5, 6, 8, 12" },
+          { name: "ต.นาวง (รวม ทต.นาวง)", high: 0, medium: 0, low: 11, total: 11, shops: 20, highVillages: "-", medVillages: "ทต.นาวง 5 ชุมชน", lowVillages: "ม.1-11" },
+          { name: "ต.ลำภูรา (รวม ทต.ลำภูรา)", high: 0, medium: 8, low: 0, total: 8, shops: 18, highVillages: "-", medVillages: "ม.1, 3, 4, 5, 7, 8, 9, 10 (ทต.ลำภูรา 5 ชุมชน)", lowVillages: "-" },
+          { name: "ต.วังคีรี", high: 0, medium: 0, low: 5, total: 5, shops: 20, highVillages: "-", medVillages: "-", lowVillages: "ม.1, 2, 3, 4, 6" },
+          { name: "ต.เขาขาว", high: 0, medium: 0, low: 7, total: 7, shops: 9, highVillages: "-", medVillages: "-", lowVillages: "ม.1-7" },
+          { name: "ต.เขาปูน", high: 0, medium: 5, low: 0, total: 5, shops: 14, highVillages: "-", medVillages: "ม.5", lowVillages: "-" },
+          { name: "ต.ในเตา", high: 0, medium: 2, low: 3, total: 5, shops: 16, highVillages: "-", medVillages: "ม.2", lowVillages: "ม.1, 3, 4" }
+        ]
+      },
+      {
+        id: "palian",
+        district: "อำเภอปะเหลียน",
+        municipalitiesNote: "รวม ทต.ทุ่งยาว (1 ชุมชน), ทต.ท่าพญา (ม.1-4)",
+        subdistricts: [
+          { name: "ต.ท่าข้าม", high: 0, medium: 0, low: 0, total: 0, shops: 19, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ทุ่งยาว (รวม ทต.ทุ่งยาว)", high: 0, medium: 1, low: 7, total: 8, shops: 20, highVillages: "-", medVillages: "ทต.ทุ่งยาว 1 ชุมชน", lowVillages: "ม.1-7" },
+          { name: "ต.ปะเหลียน", high: 0, medium: 15, low: 0, total: 15, shops: 29, highVillages: "-", medVillages: "ม.1-15", lowVillages: "-" },
+          { name: "ต.บางด้วน", high: 0, medium: 0, low: 6, total: 6, shops: 0, highVillages: "-", medVillages: "-", lowVillages: "ม.1-6" },
+          { name: "ต.บ้านนา", high: 0, medium: 0, low: 12, total: 12, shops: 28, highVillages: "-", medVillages: "-", lowVillages: "ม.1-12" },
+          { name: "ต.ท่าพญา (ทต.ท่าพญา)", high: 4, medium: 0, low: 0, total: 4, shops: 7, highVillages: "ม.1-4 (ทต.ท่าพญา)", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ลิพัง", high: 0, medium: 0, low: 6, total: 6, shops: 19, highVillages: "-", medVillages: "-", lowVillages: "ม.1, 2, 3, 4, 6, 7" },
+          { name: "ต.สุโสะ", high: 0, medium: 0, low: 7, total: 7, shops: 16, highVillages: "-", medVillages: "-", lowVillages: "ม.2, 5, 6, 7, 8, 9, 10" },
+          { name: "ต.เกาะสุกร", high: 0, medium: 0, low: 4, total: 4, shops: 15, highVillages: "-", medVillages: "-", lowVillages: "ม.1-5" },
+          { name: "ต.แหลมสอม", high: 0, medium: 11, low: 0, total: 11, shops: 10, highVillages: "-", medVillages: "ม.1-11", lowVillages: "-" }
+        ]
+      },
+      {
+        id: "yantakhao",
+        district: "อำเภอย่านตาขาว",
+        municipalitiesNote: "รวม ทต.ย่านตาขาว (เสี่ยงปานกลาง 5 ชุมชน)",
+        subdistricts: [
+          { name: "ต.ย่านตาขาว (รวม ทต.ย่านตาขาว)", high: 0, medium: 5, low: 0, total: 5, shops: 18, highVillages: "-", medVillages: "5 ชุมชน (ทต.ย่านตาขาว)", lowVillages: "-" },
+          { name: "ต.หนองบ่อ", high: 0, medium: 6, low: 0, total: 6, shops: 15, highVillages: "-", medVillages: "ม.1-6", lowVillages: "-" },
+          { name: "ต.นาชุมเห็ด", high: 3, medium: 4, low: 2, total: 9, shops: 32, highVillages: "ม.1, 4, 8", medVillages: "ม.2, 3, 6, 9", lowVillages: "ม.5, 7" },
+          { name: "ต.ในควน", high: 0, medium: 10, low: 0, total: 10, shops: 27, highVillages: "-", medVillages: "ม.1-10", lowVillages: "-" },
+          { name: "ต.โพรงจระเข้", high: 7, medium: 0, low: 0, total: 7, shops: 27, highVillages: "ม.1-7", medVillages: "-", lowVillages: "ม.1-5" },
+          { name: "ต.ทุ่งกระบือ", high: 0, medium: 0, low: 9, total: 9, shops: 25, highVillages: "-", medVillages: "-", lowVillages: "ม.1-9" },
+          { name: "ต.ทุ่งค่าย", high: 0, medium: 11, low: 0, total: 11, shops: 38, highVillages: "-", medVillages: "ม.1-11", lowVillages: "-" },
+          { name: "ต.เกาะเปียะ", high: 0, medium: 10, low: 0, total: 10, shops: 29, highVillages: "-", medVillages: "ม.1-10", lowVillages: "-" }
+        ]
+      },
+      {
+        id: "ratsada",
+        district: "อำเภอรัษฎา",
+        municipalitiesNote: "รวม ทต.คลองปาง (เสี่ยงน้อย ม.1, 2)",
+        subdistricts: [
+          { name: "ต.ควนเมา", high: 0, medium: 11, low: 0, total: 11, shops: 21, highVillages: "-", medVillages: "ม.1, 2, 4, 6, 8, 9, 11, 12, 14, 15", lowVillages: "-" },
+          { name: "ต.คลองปาง (รวม ทต.คลองปาง)", high: 4, medium: 2, low: 0, total: 6, shops: 24, highVillages: "ม.5, 6, 8, 9", medVillages: "ม.3, 4", lowVillages: "ทต.คลองปาง ม.1, 2" },
+          { name: "ต.หนองบัว", high: 9, medium: 0, low: 0, total: 9, shops: 15, highVillages: "ม.1-9", medVillages: "-", lowVillages: "-" },
+          { name: "ต.หนองปรือ", high: 0, medium: 4, low: 5, total: 9, shops: 32, highVillages: "-", medVillages: "ม.4", lowVillages: "ม.3, 6, 8, 10, 12" },
+          { name: "ต.เขาไพร", high: 0, medium: 5, low: 0, total: 5, shops: 6, highVillages: "-", medVillages: "ม.1-5", lowVillages: "-" }
+        ]
+      },
+      {
+        id: "wangwiset",
+        district: "อำเภอวังวิเศษ",
+        municipalitiesNote: "พื้นที่เสี่ยงใน 4 ตำบล (เขาวิเศษ, วังมะปราง, วังมะปรางเหนือ, ท่าสะบ้า)",
+        subdistricts: [
+          { name: "ต.เขาวิเศษ", high: 0, medium: 0, low: 7, total: 7, shops: 40, highVillages: "-", medVillages: "ม.2, 3, 8, 11", lowVillages: "ม.1, 2, 4, 6, 10, 11, 13, 14, 21" },
+          { name: "ต.วังมะปราง", high: 0, medium: 0, low: 7, total: 7, shops: 20, highVillages: "-", medVillages: "-", lowVillages: "ม.1, 2, 3, 5, 8, 9, 10" },
+          { name: "ต.วังมะปรางเหนือ", high: 0, medium: 0, low: 4, total: 4, shops: 37, highVillages: "-", medVillages: "-", lowVillages: "ม.4" },
+          { name: "ต.อ่าวตง", high: 0, medium: 0, low: 0, total: 0, shops: 53, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ท่าสะบ้า", high: 0, medium: 4, low: 7, total: 11, shops: 22, highVillages: "-", medVillages: "ม.2, 3, 5, 11", lowVillages: "ม.1, 4, 5, 6, 7, 8, 10" }
+        ]
+      },
+      {
+        id: "kantang",
+        district: "อำเภอกันตัง",
+        municipalitiesNote: "รวม ทต.ควนธานี (เสี่ยงปานกลาง ม.1-5, เสี่ยงน้อย ม.6)",
+        subdistricts: [
+          { name: "ต.กันตัง", high: 0, medium: 0, low: 0, total: 0, shops: 11, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.กันตังใต้", high: 0, medium: 0, low: 1, total: 1, shops: 14, highVillages: "-", medVillages: "-", lowVillages: "ม.6" },
+          { name: "ต.เกาะลิบง", high: 0, medium: 0, low: 0, total: 0, shops: 40, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.คลองชีล้อม", high: 0, medium: 0, low: 0, total: 0, shops: 10, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.คลองลุ", high: 0, medium: 0, low: 0, total: 0, shops: 16, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ควนธานี (ทต.ควนธานี)", high: 0, medium: 5, low: 1, total: 6, shops: 9, highVillages: "-", medVillages: "ม.1, 2, 3, 4, 5", lowVillages: "ม.6" },
+          { name: "ต.โคกยาง", high: 0, medium: 3, low: 0, total: 3, shops: 15, highVillages: "-", medVillages: "ม.1, 2, 4", lowVillages: "-" },
+          { name: "ต.นาเกลือ", high: 0, medium: 0, low: 0, total: 0, shops: 16, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.บ่อน้ำร้อน", high: 0, medium: 0, low: 0, total: 0, shops: 27, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.บางเป้า", high: 0, medium: 0, low: 0, total: 0, shops: 18, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.บางสัก", high: 0, medium: 0, low: 0, total: 0, shops: 24, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.บางหมาก", high: 0, medium: 2, low: 2, total: 4, shops: 9, highVillages: "-", medVillages: "ม.1, 4", lowVillages: "ม.3, 5" },
+          { name: "ต.ย่านซื่อ", high: 0, medium: 0, low: 3, total: 3, shops: 6, highVillages: "-", medVillages: "-", lowVillages: "ม.1, 3, 4" },
+          { name: "ต.วังวน", high: 0, medium: 0, low: 0, total: 0, shops: 7, highVillages: "-", medVillages: "-", lowVillages: "-" }
+        ]
+      },
+      {
+        id: "nayong",
+        district: "อำเภอนาโยง",
+        municipalitiesNote: "รวม ทต.นาโยงเหนือ (ชุมชนหนองไทร, ชุมชนพุทธสิหิงค์)",
+        subdistricts: [
+          { name: "ต.นาโยงเหนือ (รวม ทต.นาโยงเหนือ)", high: 0, medium: 1, low: 1, total: 2, shops: 36, highVillages: "-", medVillages: "ชุมชนหนองไทร, ม.7", lowVillages: "ชุมชนพุทธสิหิงค์, ม.1, 2, 4, 5, 10" },
+          { name: "ต.ช่อง", high: 0, medium: 1, low: 2, total: 3, shops: 24, highVillages: "-", medVillages: "ม.3", lowVillages: "ม.1, 4" },
+          { name: "ต.ละมอ", high: 0, medium: 0, low: 0, total: 0, shops: 21, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.โคกสะบ้า", high: 0, medium: 0, low: 0, total: 0, shops: 32, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.นาหมื่นศรี", high: 0, medium: 0, low: 0, total: 0, shops: 23, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.นาข้าวเสีย", high: 0, medium: 0, low: 2, total: 2, shops: 35, highVillages: "-", medVillages: "-", lowVillages: "พื้นที่เฝ้าระวัง 2 หมู่บ้าน" }
+        ]
+      },
+      {
+        id: "sikao",
+        district: "อำเภอสิเกา",
+        municipalitiesNote: "พื้นที่เสี่ยงอุทกภัยเฉพาะ ต.นาเมืองเพชร (ม.2-7)",
+        subdistricts: [
+          { name: "ต.บ่อหิน", high: 0, medium: 0, low: 0, total: 0, shops: 35, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.เขาไม้แก้ว", high: 0, medium: 0, low: 0, total: 0, shops: 32, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.กะลาเส (สะลาเส)", high: 0, medium: 0, low: 0, total: 0, shops: 22, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ไม้ฝาด", high: 0, medium: 0, low: 0, total: 0, shops: 48, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.นาเมืองเพชร", high: 0, medium: 0, low: 6, total: 6, shops: 21, highVillages: "-", medVillages: "-", lowVillages: "ม.2-7" }
+        ]
+      },
+      {
+        id: "hatsamran",
+        district: "อำเภอหาดสำราญ",
+        municipalitiesNote: "ไม่มีหมู่บ้านในเกณฑ์เสี่ยงอุทกภัย (มีร้านธงฟ้าครอบคลุม 3 ตำบล รวม 90 ร้าน)",
+        subdistricts: [
+          { name: "ต.หาดสำราญ", high: 0, medium: 0, low: 0, total: 0, shops: 43, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.บ้าหวี", high: 0, medium: 0, low: 0, total: 0, shops: 17, highVillages: "-", medVillages: "-", lowVillages: "-" },
+          { name: "ต.ตะเสะ", high: 0, medium: 0, low: 0, total: 0, shops: 30, highVillages: "-", medVillages: "-", lowVillages: "-" }
+        ]
+      }
+    ];
+
+    // State Variables
+    let currentRiskFilter = 'all';
+    let currentSearchQuery = '';
+    let allAccordionsOpen = false;
+    const openAccordionIds = new Set();
+
+    // Helper: Calculate district aggregates
+    function getDistrictSummary(districtObj) {
+      return districtObj.subdistricts.reduce(
+        (acc, sub) => {
+          acc.high += sub.high;
+          acc.medium += sub.medium;
+          acc.low += sub.low;
+          acc.total += sub.total;
+          acc.shops += sub.shops;
+          return acc;
+        },
+        { high: 0, medium: 0, low: 0, total: 0, shops: 0 }
+      );
+    }
+
+    // Main Render Function
+    function render() {
+      const grid = document.getElementById('cardsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const query = currentSearchQuery.trim().toLowerCase();
+
+      let visibleDistrictsCount = 0;
+      let visibleSubdistrictsCount = 0;
+
+      const cardsHtml = trangFloodData.map((districtObj) => {
+        const fullSummary = getDistrictSummary(districtObj);
+
+        // Filter subdistricts by search query & risk filter
+        const matchingSubdistricts = districtObj.subdistricts.filter((sub) => {
+          const matchesQuery =
+            !query ||
+            districtObj.district.toLowerCase().includes(query) ||
+            districtObj.municipalitiesNote.toLowerCase().includes(query) ||
+            sub.name.toLowerCase().includes(query) ||
+            sub.highVillages.toLowerCase().includes(query) ||
+            sub.medVillages.toLowerCase().includes(query) ||
+            sub.lowVillages.toLowerCase().includes(query);
+
+          if (!matchesQuery) return false;
+
+          if (currentRiskFilter === 'high') {
+            return query ? sub.high > 0 || districtObj.district.toLowerCase().includes(query) : true;
+          }
+          if (currentRiskFilter === 'high_med') {
+            return query ? (sub.high + sub.medium > 0) || districtObj.district.toLowerCase().includes(query) : true;
+          }
+          return true;
+        });
+
+        // District-level Risk Filter check
+        if (currentRiskFilter === 'high' && fullSummary.high === 0) return '';
+        if (currentRiskFilter === 'high_med' && (fullSummary.high + fullSummary.medium) === 0) return '';
+        if (currentRiskFilter === 'has_risk' && fullSummary.total === 0) return '';
+        if (matchingSubdistricts.length === 0) return '';
+
+        visibleDistrictsCount++;
+        visibleSubdistrictsCount += matchingSubdistricts.length;
+
+        // Auto-open accordion if user is actively searching
+        const isOpen = query.length > 0 || openAccordionIds.has(districtObj.id);
+
+        // Progress bar percentages
+        const highPct = fullSummary.total > 0 ? ((fullSummary.high / fullSummary.total) * 100).toFixed(1) : 0;
+        const medPct = fullSummary.total > 0 ? ((fullSummary.medium / fullSummary.total) * 100).toFixed(1) : 0;
+        const lowPct = fullSummary.total > 0 ? ((fullSummary.low / fullSummary.total) * 100).toFixed(1) : 0;
+
+        // Status badge color
+        let badgeHtml = '';
+        if (fullSummary.high > 0) {
+          badgeHtml = `<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 border border-red-200">มีพื้นที่เสี่ยงมาก (${fullSummary.high})</span>`;
+        } else if (fullSummary.medium > 0) {
+          badgeHtml = `<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">เฝ้าระวังระดับปานกลาง</span>`;
+        } else if (fullSummary.low > 0) {
+          badgeHtml = `<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 border border-emerald-200">ความเสี่ยงระดับน้อย</span>`;
+        } else {
+          badgeHtml = `<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">ไม่มีพื้นที่เสี่ยงอุทกภัย</span>`;
+        }
+
+        const subdistrictRowsHtml = matchingSubdistricts.map((sub, idx) => {
+          const rowHighlight = sub.high > 0 ? 'bg-red-50/40' : '';
+          return `
+            <tr class="border-b border-slate-100 hover:bg-slate-50/90 transition ${rowHighlight}">
+              <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs text-slate-400 w-4">${idx + 1}.</span>
+                  <span>${sub.name}</span>
+                </div>
+              </td>
+              <td class="py-3 px-2 text-center">
+                ${sub.high > 0
+                  ? `<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700">${sub.high}</span>`
+                  : `<span class="text-slate-300 text-xs">0</span>`}
+              </td>
+              <td class="py-3 px-2 text-center">
+                ${sub.medium > 0
+                  ? `<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800">${sub.medium}</span>`
+                  : `<span class="text-slate-300 text-xs">0</span>`}
+              </td>
+              <td class="py-3 px-2 text-center">
+                ${sub.low > 0
+                  ? `<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">${sub.low}</span>`
+                  : `<span class="text-slate-300 text-xs">0</span>`}
+              </td>
+              <td class="py-3 px-2 text-center font-semibold text-slate-800">${sub.total}</td>
+              <td class="py-3 px-2 text-center">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/70">
+                  ${sub.shops} ร้าน
+                </span>
+              </td>
+              <td class="py-3 px-3 text-xs text-slate-600 min-w-[210px]">
+                <div class="space-y-0.5">
+                  ${sub.highVillages !== '-' ? `<div><span class="font-semibold text-red-600">เสี่ยงมาก:</span> ${sub.highVillages}</div>` : ''}
+                  ${sub.medVillages !== '-' ? `<div><span class="font-semibold text-amber-700">ปานกลาง:</span> ${sub.medVillages}</div>` : ''}
+                  ${sub.lowVillages !== '-' ? `<div><span class="font-semibold text-emerald-700">น้อย:</span> ${sub.lowVillages}</div>` : ''}
+                  ${sub.highVillages === '-' && sub.medVillages === '-' && sub.lowVillages === '-' ? `<span class="text-slate-400">-</span>` : ''}
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        return `
+          <article class="bg-white rounded-3xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition duration-200">
+            <!-- Card Top Section -->
+            <div class="p-5 sm:p-6">
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+                <div>
+                  <div class="flex items-center gap-2.5 flex-wrap">
+                    <h2 class="text-xl font-bold text-slate-900">${districtObj.district}</h2>
+                    ${badgeHtml}
+                  </div>
+                  <p class="text-xs text-slate-500 mt-1">${districtObj.municipalitiesNote}</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs text-slate-400 block">จำนวนตำบลทั้งหมด</span>
+                  <span class="text-sm font-bold text-slate-700">${districtObj.subdistricts.length} ตำบล</span>
+                </div>
+              </div>
+
+              <!-- 4 Mini Boxes: High, Medium, Low, Thong Fah Shops -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 my-4">
+                <div class="rounded-2xl bg-red-50/70 border border-red-100 p-3 text-center">
+                  <span class="text-xs font-medium text-red-700 block">เสี่ยงมาก</span>
+                  <span class="text-2xl font-bold text-red-700">${fullSummary.high}</span>
+                  <span class="text-[11px] text-red-600/80 block">หมู่บ้าน/ชุมชน</span>
+                </div>
+                <div class="rounded-2xl bg-amber-50/70 border border-amber-100 p-3 text-center">
+                  <span class="text-xs font-medium text-amber-800 block">เสี่ยงปานกลาง</span>
+                  <span class="text-2xl font-bold text-amber-700">${fullSummary.medium}</span>
+                  <span class="text-[11px] text-amber-700/80 block">หมู่บ้าน/ชุมชน</span>
+                </div>
+                <div class="rounded-2xl bg-emerald-50/70 border border-emerald-100 p-3 text-center">
+                  <span class="text-xs font-medium text-emerald-800 block">เสี่ยงน้อย</span>
+                  <span class="text-2xl font-bold text-emerald-700">${fullSummary.low}</span>
+                  <span class="text-[11px] text-emerald-700/80 block">หมู่บ้าน/ชุมชน</span>
+                </div>
+                <div class="rounded-2xl bg-sky-50/80 border border-sky-100 p-3 text-center">
+                  <span class="text-xs font-medium text-sky-800 block">ร้านธงฟ้า</span>
+                  <span class="text-2xl font-bold text-sky-700">${fullSummary.shops}</span>
+                  <span class="text-[11px] text-sky-700/80 block">ร้านค้าในพื้นที่</span>
+                </div>
+              </div>
+
+              <!-- Risk Ratio Bar -->
+              <div class="mb-4">
+                <div class="flex justify-between text-xs text-slate-500 mb-1.5">
+                  <span>รวมพื้นที่เสี่ยงอุทกภัยในอำเภอ: <strong class="text-slate-800">${fullSummary.total} แห่ง</strong></span>
+                  <span>สัดส่วนความรุนแรง</span>
+                </div>
+                <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden flex">
+                  ${fullSummary.total > 0 ? `
+                    <div style="width: ${highPct}%" class="bg-red-500 h-full" title="เสี่ยงมาก ${fullSummary.high}"></div>
+                    <div style="width: ${medPct}%" class="bg-amber-400 h-full" title="เสี่ยงปานกลาง ${fullSummary.medium}"></div>
+                    <div style="width: ${lowPct}%" class="bg-emerald-500 h-full" title="เสี่ยงน้อย ${fullSummary.low}"></div>
+                  ` : `<div class="w-full bg-slate-200 h-full"></div>`}
+                </div>
+              </div>
+
+              <!-- Accordion Trigger Button -->
+              <button
+                onclick="toggleAccordion('${districtObj.id}')"
+                class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 font-semibold text-xs sm:text-sm flex items-center justify-between transition"
+              >
+                <span>ดูรายละเอียดรายตำบล / หมู่บ้าน และร้านธงฟ้า (${matchingSubdistricts.length} ตำบล)</span>
+                <svg
+                  id="icon-${districtObj.id}"
+                  class="w-4 h-4 text-slate-600 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Accordion Expandable Table -->
+            <div id="content-${districtObj.id}" class="accordion-content ${isOpen ? 'open' : ''} border-t border-slate-100 bg-slate-50/40">
+              <div class="p-4 sm:p-5 overflow-x-auto table-scroll">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr class="bg-slate-100/90 text-slate-600 border-b border-slate-200 text-xs uppercase">
+                      <th class="py-2.5 px-3 rounded-tl-xl">ตำบล / เทศบาล</th>
+                      <th class="py-2.5 px-2 text-center text-red-700">เสี่ยงมาก</th>
+                      <th class="py-2.5 px-2 text-center text-amber-800">ปานกลาง</th>
+                      <th class="py-2.5 px-2 text-center text-emerald-700">เสี่ยงน้อย</th>
+                      <th class="py-2.5 px-2 text-center">รวมเสี่ยง</th>
+                      <th class="py-2.5 px-2 text-center text-sky-800">ร้านธงฟ้า</th>
+                      <th class="py-2.5 px-3 rounded-tr-xl">หมู่บ้าน / ชุมชนที่เสี่ยง</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 bg-white">
+                    ${subdistrictRowsHtml}
+                  </tbody>
+                  <tfoot>
+                    <tr class="bg-slate-100/80 font-bold text-slate-800 text-xs">
+                      <td class="py-2.5 px-3">รวมทั้ง${districtObj.district}</td>
+                      <td class="py-2.5 px-2 text-center text-red-700">${fullSummary.high}</td>
+                      <td class="py-2.5 px-2 text-center text-amber-800">${fullSummary.medium}</td>
+                      <td class="py-2.5 px-2 text-center text-emerald-700">${fullSummary.low}</td>
+                      <td class="py-2.5 px-2 text-center">${fullSummary.total}</td>
+                      <td class="py-2.5 px-2 text-center text-sky-700">${fullSummary.shops} ร้าน</td>
+                      <td class="py-2.5 px-3 text-slate-500 font-normal">ข้อมูลครบ ${districtObj.subdistricts.length} ตำบล</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      grid.innerHTML = cardsHtml;
+
+      // Toggle Empty State
+      if (visibleDistrictsCount === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      // Update status count text
+      document.getElementById('resultCountText').innerText =
+        `กำลังแสดง ${visibleDistrictsCount} อำเภอ (${visibleSubdistrictsCount} ตำบลที่ตรงเงื่อนไข)`;
+    }
+
+    // Search Input Handler
+    function filterData() {
+      const input = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      currentSearchQuery = input.value;
+
+      if (currentSearchQuery.trim().length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      render();
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      currentSearchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      render();
+    }
+
+    // Risk Filter Button Handler
+    function setRiskFilter(filterType) {
+      currentRiskFilter = filterType;
+
+      // Update active button styling
+      const buttons = {
+        all: document.getElementById('btn-filter-all'),
+        high: document.getElementById('btn-filter-high'),
+        high_med: document.getElementById('btn-filter-high_med'),
+        has_risk: document.getElementById('btn-filter-has_risk')
+      };
+
+      Object.keys(buttons).forEach((key) => {
+        if (key === filterType) {
+          buttons[key].className = 'filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-sm';
+        } else {
+          buttons[key].className = 'filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-slate-100 text-slate-700 hover:bg-slate-200/70';
+        }
+      });
+
+      render();
+    }
+
+    // Reset all filters
+    function resetAllFilters() {
+      clearSearch();
+      setRiskFilter('all');
+    }
+
+    // Single Accordion Toggle
+    function toggleAccordion(id) {
+      const content = document.getElementById(`content-${id}`);
+      const icon = document.getElementById(`icon-${id}`);
+      if (!content) return;
+
+      if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        icon.classList.remove('rotate-180');
+        openAccordionIds.delete(id);
+      } else {
+        content.classList.add('open');
+        icon.classList.add('rotate-180');
+        openAccordionIds.add(id);
+      }
+    }
+
+    // Expand / Collapse All Accordions
+    function toggleAllAccordions() {
+      allAccordionsOpen = !allAccordionsOpen;
+      const btnText = document.getElementById('toggleAllText');
+      const btnIcon = document.getElementById('toggleAllIcon');
+
+      if (allAccordionsOpen) {
+        trangFloodData.forEach((d) => openAccordionIds.add(d.id));
+        btnText.innerText = 'พับตารางย่อยทั้งหมด';
+        btnIcon.classList.add('rotate-180');
+      } else {
+        openAccordionIds.clear();
+        btnText.innerText = 'ขยายตารางย่อยทั้งหมด';
+        btnIcon.classList.remove('rotate-180');
+      }
+      render();
+    }
+
+    // Initial Render on Page Load
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+    });
+  </script>
+</body>
+</html>
